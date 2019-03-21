@@ -12,3 +12,66 @@ Lets start with api returned by https://gorest.co.in/public-api/users?_format=js
 
     <table id="dynamicTable">
     </table> 
+    
+# json object that shoud be created to initialize the table
+**template key** has been used to custom rendering,  **::key_name** will be replaced with the dynamic value in api and **::(object_name)::** will map the current column value to that object.
+
+    columnInfo	={
+					   columns:
+					   [
+                            {   name : 'name',
+                                type: 'text',
+                                label:'Name',
+                                template: '<img src="::_links.avatar.href::" style="width: 60px; border-radius: 50%;"/> ::name::',
+                                searchable: true
+                            },
+                            {   name : 'gender',
+                                type: 'text',
+                                label:'Gender',
+                                searchable: true
+                            },
+                            {   name : 'dob',
+                                type: 'text',
+                                label:'DOB',
+                                searchable: true
+                            },
+                            {
+                                name: 'email',
+                                type: 'text',
+                                label: 'Email',
+                                searchable: true
+                            },
+                            {
+                                name: 'status',
+                                label: 'Status',
+                                badgeClasses: {
+                                    'active':'badge-success',
+                                    'inactive': 'badge-danger'
+                                },
+                                template : '<a class="change-status" href="javascript:;" id="::id::"> <span class="badge ::(badgeClasses)::">::status::</span></a>',
+                                tdClass: 'text-center',
+                            },
+                            {
+                                name: 'address',
+                                type: 'text',
+                                label: 'Address',
+                                searchable: true,
+                            },
+                            {
+                                name: 'website',
+                                type: 'text',
+                                label: 'Website',
+                                template: '<a href="::website::" target="_blank">::website::</a>',
+                                searchable: true,
+                            }
+                    ],
+                    actionButtons : 
+                    [
+                        {
+                            template: '<a title = "Click to edit this record" href="{{request()->root()}}/admin/user/edit/::id::"> <i class = "fa fa-edit"></i> Edit</a>'
+                        },
+                        {
+                            template: '<a title="Click to delete this record" href="javascript:;"> <i class = "fa fa-trash-o"></i> Delete</a>'
+                        }
+                    ]
+                }; 
