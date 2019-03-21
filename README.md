@@ -15,24 +15,15 @@ Lets start with api returned by https://gorest.co.in/public-api/users?_format=js
     
 # json object that shoud be created to initialize the table
 **template key** has been used to custom rendering,  **::key_name** will be replaced with the dynamic value in api and **::(object_name)::** will map the current column value to that object.
+Following json object is the structure for columns (name, email, status, website) and an action button.
 
-    columnInfo	={
+    columnInfo	= {
 			columns:
 			[
                             {   name : 'name',
                                 type: 'text',
                                 label:'Name',
                                 template: '<img src="::_links.avatar.href::" style="width: 60px; border-radius: 50%;"/> ::name::',
-                                searchable: true
-                            },
-                            {   name : 'gender',
-                                type: 'text',
-                                label:'Gender',
-                                searchable: true
-                            },
-                            {   name : 'dob',
-                                type: 'text',
-                                label:'DOB',
                                 searchable: true
                             },
                             {
@@ -52,12 +43,6 @@ Lets start with api returned by https://gorest.co.in/public-api/users?_format=js
                                 tdClass: 'text-center',
                             },
                             {
-                                name: 'address',
-                                type: 'text',
-                                label: 'Address',
-                                searchable: true,
-                            },
-                            {
                                 name: 'website',
                                 type: 'text',
                                 label: 'Website',
@@ -68,10 +53,7 @@ Lets start with api returned by https://gorest.co.in/public-api/users?_format=js
                     actionButtons : 
                     [
                         {
-                            template: '<a title = "Click to edit this record" href="{{request()->root()}}/admin/user/edit/::id::"> <i class = "fa fa-edit"></i> Edit</a>'
-                        },
-                        {
-                            template: '<a title="Click to delete this record" href="javascript:;"> <i class = "fa fa-trash-o"></i> Delete</a>'
+                            <a title = "Click to edit this record" href="::_links.self.href::"> <i class = "fa fa-eye"></i> View</a>
                         }
                     ]
                 }; 
