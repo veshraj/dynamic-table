@@ -5,15 +5,15 @@ I am great admirer of datatable. I used it for long time and feel something can 
 
 This plugin has been developed to synchronize data with server, search on specific columns and rendering as easy as possilbe. It will not look in client side to search. This allows you to set range serach. To work with this you just need to know how to write JSON object in javascript and initialize the jQuery plugin.
 
-# 2. Example based on https://gorest.co.in/
+## 2. Example based on https://gorest.co.in/
 Lets start with api returned by https://gorest.co.in/public-api/users?_format=json&access-token=IHV_k_ry6RjB1Pns90WDZKKGVih42hXSeEp2
 
-## 2.1 html for table
+### 2.1 html for table
 
     <table id="dynamicTable">
     </table> 
     
-## 2.2 json object that shoud be created to initialize the table
+### 2.2 json object that shoud be created to initialize the table
 **template key** has been used to custom rendering,  **::key_name** will be replaced with the dynamic value in api and **::(object_name)::** will map the current column value to that object.
 Following json object is the structure for columns (name, email, status, website) and an action button.
 
@@ -57,7 +57,7 @@ Following json object is the structure for columns (name, email, status, website
                         }
                     ]
                 }; 
-## 2.3 initialize the table with jQuery plugin
+### 2.3 initialize the table with jQuery plugin
     
     $('#dynamicTable').dynamicTable({
         // custom table that you want to apply on table 
@@ -78,7 +78,10 @@ Following json object is the structure for columns (name, email, status, website
 	   }
     });
     
- ## 2.4 Output screen shot of above example
+ ### 2.4 Output screen shot of above example
     
 ![Screen Shot 2019-03-21 at 4 21 32 PM](https://user-images.githubusercontent.com/4266975/54748003-82351400-4bf8-11e9-9c11-ea9ace0f4995.png)
+
+## 3. Column options
+ 
 
