@@ -17,8 +17,8 @@ Lets start with api returned by https://gorest.co.in/public-api/users?_format=js
 **template key** has been used to custom rendering,  **::key_name** will be replaced with the dynamic value in api and **::(object_name)::** will map the current column value to that object.
 
     columnInfo	={
-					   columns:
-					   [
+			columns:
+			[
                             {   name : 'name',
                                 type: 'text',
                                 label:'Name',
