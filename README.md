@@ -7,3 +7,8 @@ This plugin has been developed to synchronize data with server, search on specif
 
 # Example based on https://gorest.co.in/
 Lets start with api returned by https://gorest.co.in/public-api/users?_format=json&access-token=IHV_k_ry6RjB1Pns90WDZKKGVih42hXSeEp2
+
+# html for table
+
+    <table id="dynamicTable">
+    </table> 
