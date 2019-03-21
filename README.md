@@ -1,5 +1,5 @@
 # dynamic-table
-JQuery Plugin for dynamic table
+JQuery Plugin for dynamic table - designing based on bootstrap4
 # General Overview -
 I am great admirer of datatable. I used it for long time and feel something can be improved in it - specifically, when it comes to work with dynamic contents recieving from server, search on specific columns, changing the representation of data (column) in table.
 
