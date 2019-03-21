@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Dynamic Table Goes Here
+		</title>
+		<link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/dynamic-table.css">
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script type="text/javascript" src="./node_modules/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	</head>
+	<body class="bg-danger">
+		<div class="container bg-light p-4" >
+			<table id="dynamicTable">
+			  	
+			  
+			</table>
+		</div>
+		<script type="text/javascript" src="./js/jquery.dynamic-table.js"></script>
+		<script type="text/javascript">
+			columnInfo= 	{
+					           	columns:
+					            [
+					                    {   name : 'name',
+					                        type: 'text',
+					                        label:'Name',
+					                        template: '<img src="::_links.avatar.href::" style="width: 60px; border-radius: 50%;"/> ::name::',
+					                        searchable: true
+					                    },
+					                    {   name : 'gender',
+					                        type: 'text',
+					                        label:'Gender',
+					                        searchable: true
+					                    },
+					                    {   name : 'dob',
+					                        type: 'text',
+					                        label:'DOB',
+					                        searchable: true
+					                    },
+					                    {
+					                        name: 'email',
+					                        type: 'text',
+					                        label: 'Email',
+					                        searchable: true
+					                    },
+
+					                    {
+					                        name: 'status',
+					                        type: 'actionable',
+					                        label: 'Status',
+					                       	badgeClasses: {
+					                            'active':'badge-success',
+					                            'inactive': 'badge-danger'
+					                        },
+					                        template : '<a class="change-status" href="javascript:;" id="::id::"> <span class="badge ::(badgeClasses)::">::status::</span></a>',
+	                                        tdClass: 'text-center',
+					                    },
+					                    {
+					                        name: 'address',
+					                        type: 'text',
+					                        label: 'Address',
+					                        searchable: true,
+					                    },
+					                    {
+					                        name: 'website',
+					                        type: 'text',
+					                        label: 'Website',
+					                        template: '<a href="::website::" target="_blank">::website::</a>',
+					                        searchable: true,
+					                    }
+					            ],
+					            primaryKey: 'id',
+					            actionButtons : 
+					            [
+	                                {
+	                                    template: '<a title = "Click to edit this record" href="::_links.self.href::"> <i class = "fa fa-eye"></i> View</a>'
+	                                },
+	                            ]
+					        }; 
+
+			$('#dynamicTable').dynamicTable({class: 'table-bordered table-striped',
+				url: 'https://gorest.co.in/public-api/users',
+				method : 'GET',
+				totalItemsKey: '_meta.totalCount',
+				dataItemsKey: 'result',
+				columnInfo: columnInfo,
+				params: {'_format': 'json',
+						'access-token': 'IHV_k_ry6RjB1Pns90WDZKKGVih42hXSeEp2'
+				}
+			});
+		</script>
+
+	</body>
+</html>

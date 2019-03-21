@@ -19,6 +19,7 @@
 			dataItemsKey: 'data',
 			totalItemsKey: 'total',
 			request: null,
+			params : null
 		},configs);
 
 		var templatePatternRegex = /\::(.*?)\::/g;
@@ -284,6 +285,11 @@
 				$(inputs).each(function(inex,obj){
 					dataObj[$(obj).prop('name')] = $(obj).val();
 				});
+				var keys = Object.keys(settings.params);
+				keys.forEach(function(key){
+					dataObj[key] = settings.params[key];
+				});
+
 				return dataObj;
 			}
 
@@ -417,4 +423,3 @@
 	}
 
 }(jQuery));
-// this function structre says that - this function has independent functions and variables and do not conflict outside of the file
