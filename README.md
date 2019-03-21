@@ -57,3 +57,23 @@ Following json object is the structure for columns (name, email, status, website
                         }
                     ]
                 }; 
+# initialize the table with jQuery plugin
+    
+    $('#dynamicTable').dynamicTable({
+        // custom table that you want to apply on table 
+        class: 'table-bordered table-striped',
+	// api from where you want to fetch data formm
+	url: 'https://gorest.co.in/public-api/users',
+	// method used to call api
+	method : 'GET',
+	// key in api that give information of total items
+	totalItemsKey: '_meta.totalCount',
+	// key in api which hold the items that need to shown
+	dataItemsKey: 'result',
+	// column info that is given
+	columnInfo: columnInfo,
+	// default parameters that you want to send along with api call
+	params: {'_format': 'json',
+			'access-token': 'IHV_k_ry6RjB1Pns90WDZKKGVih42hXSeEp2'
+    		}
+    });
