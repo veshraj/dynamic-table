@@ -28,16 +28,6 @@
 					                        template: '<img src="::_links.avatar.href::" style="width: 60px; border-radius: 50%;"/> ::name::',
 					                        searchable: true
 					                    },
-					                    {   name : 'gender',
-					                        type: 'text',
-					                        label:'Gender',
-					                        searchable: true
-					                    },
-					                    {   name : 'dob',
-					                        type: 'text',
-					                        label:'DOB',
-					                        searchable: true
-					                    },
 					                    {
 					                        name: 'email',
 					                        type: 'text',
@@ -57,12 +47,6 @@
 	                                        tdClass: 'text-center',
 					                    },
 					                    {
-					                        name: 'address',
-					                        type: 'text',
-					                        label: 'Address',
-					                        searchable: true,
-					                    },
-					                    {
 					                        name: 'website',
 					                        type: 'text',
 					                        label: 'Website',
@@ -73,7 +57,7 @@
 					            primaryKey: 'id',
 					            actionButtons : 
 					            [
-	                                {
+	                                { 
 	                                    template: '<a title = "Click to edit this record" href="::_links.self.href::"> <i class = "fa fa-eye"></i> View</a>'
 	                                },
 	                            ]
