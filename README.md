@@ -80,6 +80,7 @@ Following json object is the structure for columns (name, email, status, website
     
  ### 2.4 Output screen shot of above example
 
+![Screen Shot 2019-03-22 at 11 00 58 AM](https://user-images.githubusercontent.com/4266975/54805145-21f8ad80-4c9e-11e9-8bc8-af7d19e8424b.png)
 
 ## 3. Column options
  Following structure has possible options to a column
