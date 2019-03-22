@@ -85,29 +85,22 @@ Following json object is the structure for columns (name, email, status, website
  Following structure has possible options to a column
  
  	{  
-	    // @string type
-	      name : 'key_in_api @String',
-	    // @string type text/number/date are supproted for now
-            type: 'type_of_input_to_show',
-	    // @string
-            label: 'Caption Displayed on Head of the column',
-	    // @boolean
-            searchable: 'flag_for_whether_column_will_be_searchable_or_not',
-	    // @integer
+	    name : 'key_in_api @String',
+	    type: 'type_of_input_to_show',
+	    label: 'Caption Displayed on Head of the column',
+	    searchable: 'flag_for_whether_column_will_be_searchable_or_not',
 	    max: 'maximun_number_of_text_displayed @integer',
-	    // @string but in html
 	    template: '<a href="::website::" target="_blank">::website::</a>',
-	    // @array of objects
-            tetemplates: [{
-	    		    // @string formatted which will be converted to condtion
-                             expression: '(::customer_id::)',
-			     // no template display jsut value there
-                          },
-                          {
-                              expression: '(!::customer_id::)',
-                              template: '<a class="btn assign-customer-id btn-primary btn-sm text-light" subscriber-id="::id::"> <i class = "fa fa-plus"></i> Customer Id</a>'
-                           }
-             ]
+	    tetemplates: [
+	       {
+	    	    expression: '(::customer_id::)',
+		    // no template display jsut value there
+               },
+               {
+                    expression: '(!::customer_id::)',
+                    template: '<a class="btn assign-customer-id btn-primary btn-sm text-light" subscriber-id="::id::"> <i class = "fa fa-plus"></i> Customer Id</a>'
+                }
+            ]
 	    
         },
 
