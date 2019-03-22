@@ -85,7 +85,7 @@ Following json object is the structure for columns (name, email, status, website
  Following structure has possible options to a column
  
  	{  
-	    name : 'key_in_api @String',
+	    name : 'key_in_api',
 	    type: 'type_of_input_to_show',
 	    label: 'Caption Displayed on Head of the column',
 	    searchable: 'flag_for_whether_column_will_be_searchable_or_not',
@@ -100,7 +100,11 @@ Following json object is the structure for columns (name, email, status, website
                     expression: '(!::customer_id::)',
                     template: '<a class="btn assign-customer-id btn-primary btn-sm text-light" subscriber-id="::id::"> <i class = "fa fa-plus"></i> Customer Id</a>'
                 }
-            ]
-	    
-        },
+            ],
+	    options: [{'key': 'key_name', 'value': 'vlaue'}],
+	    url: 'url_to_load_list_in_select_input',
+	    tdClass: 'classes_that_you_want_to_apply_to_parent_table_data',
+	    visible: true,
+	    range: true
+	},
 
