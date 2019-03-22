@@ -124,7 +124,28 @@ Following json object is the structure for columns (name, email, status, website
 
     template : '<a class="change-status" href = "javascript:;" id = "::id::"> <span class = "badge ::(badgeClasses)::"> ::status:: </span></a>'
 Let's understand this by example given above. `status` key has been taken here. This template shows a badge sorrounded by anchor tag. Every thing is in plain html except `id = "::id::"`, `class = "badge ::(badgeClasses)::"`, `::status::`.
-Here- string  in between **::** is the key exists in json object represting a row. Thus, `::id::` will be replaced by dynamic value of `rowObject.id` and same thing applies to `::status::` and replaced by - `rowObject.status`. Now difference is with - `::(badgeClasses)::` this map the current key value to some object. Here, key is - column name and the mapping object is `badgeClasses` with is defined within the column. To understand this please look into above example with output.
+Here- string  in between **::** is the key exists in json object represting a row. Thus, `::id::` will be replaced by dynamic value of `rowObject.id` and same thing applies to `::status::` and replaced by - `rowObject.status`. Now difference is with - `::(badgeClasses)::` this map the current key value to some object. Here, key is - column name and the mapping object is `badgeClasses` with is defined within the column. To understand this please look into above example with output and read about `mapping_object` described below.
+
+
+### 3.6 mapping_object - @jsonObject [optional]
+`mapping_object` name could be anything and one column may have multiple mapping object. This holds the json object with possible values of the column. Suppose, user's activeness and possible values are `active` and `inactive`. Now, you need to have differnet color code for these states. Now, you can map them writing mapping_object with in template option. Look into above example.
+
+### 3.7 templates - @arrayOfJsonObjects [optional]
+`templates` is the array of templates and each template is the json object contain two keys `expresion` and `template` here `tempalte` key is optional and same as `column.template` option. It has following structure -
+
+
+    tetemplates: [
+	       {
+	    	    expression: '(::customer_id::)',
+		    // no template display jsut value there
+               },
+               {
+                    expression: '(!::customer_id::)',
+                    template: '<a class="btn assign-customer-id btn-primary btn-sm text-light" subscriber-id="::id::"> <i class = "fa fa-plus"></i> Customer Id</a>'
+                }
+            ]
+Let's start with `expression` key - which hold's the condition to apply paritcular template. If no template is there then it will simply disply the value there other wise template will be rendered there. Have a look in structure of `templates`
+option. `(::cutomer_id::)` will be converted to condition - `(rowObject.customer_id)` and `(!::customer_id::)` will be converted to `(!rowObject.customer_id)` and render the template as condition matched. You have to enclose dynamic key by `::`. Suppose you have to make use of `>=` oprator then - experssion should be written as `(::customer_id:: > 1)`.
 
 
 
