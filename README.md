@@ -87,10 +87,9 @@ Following json object is the structure for columns (name, email, status, website
  
  	{  
 	    name : 'key_in_api',
-	    type: 'type_of_input_to_show',
 	    label: 'Caption Displayed on Head of the column',
 	    searchable: 'flag_for_whether_column_will_be_searchable_or_not',
-	    max: 'maximun_number_of_text_displayed @integer',
+	    type: 'type_of_input_to_show',
 	    template: '<a href="::website::" target="_blank">::website::</a>',
 	    tetemplates: [
 	       {
@@ -108,4 +107,24 @@ Following json object is the structure for columns (name, email, status, website
 	    visible: true,
 	    range: true
 	},
+### 3.1 name - @string and mandatory
+`name` is a string whose which is corresponding to the name of the field or key in the json object which is equivalent to the row fetched form database. This is mandatory.
+
+### 3.2 label - @string and mandatory
+`label` is the string which will be displayed on head of the column
+
+### 3.3 searchable - @string and [optional]
+`searchable` this is the flag for whether the search input will be displayed under the heading.
+
+### 3.4 type - @string and [optional]
+`type` is string for search input. It's possbile values are text / number / date / select. This is dependable in searchable option.
+
+### 3.5 template - @htmlstring and [optional]
+`template` is the string of html element(s). This feature allows you to compose user interface as per required. It has following pattern.
+
+    template : '<a class="change-status" href = "javascript:;" id = "::id::"> <span class = "badge ::(badgeClasses)::"> ::status:: </span></a>'
+Let's understand this by example given above. `status` key has been taken here. This template shows a badge sorrounded by anchor tag. Every thing is in plain html except `id = "::id::"`, `class = "badge ::(badgeClasses)::"`, `::status::`.
+Here- string  in between **::** is the key exists in json object represting a row. Thus, `::id::` will be replaced by dynamic value of `rowObject.id` and same thing applies to `::status::` and replaced by - `rowObject.status`. Now difference is with - `::(badgeClasses)::` this map the current key value to some object. Here, key is - column name and the mapping object is `badgeClasses` with is defined within the column. To understand this please look into above example with output.
+
+
 
