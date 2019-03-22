@@ -164,3 +164,5 @@ Code presented in structure will populate 2 options.
 
 ### 3.11 tdClass @string [optional]
 `tdClass` option holds value that will be applied to parend `td`.
+
+## 4 Options to dynamic-table initialization
