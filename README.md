@@ -166,3 +166,20 @@ Code presented in structure will populate 2 options.
 `tdClass` option holds value that will be applied to parend `td`.
 
 ## 4 Options to dynamic-table initialization
+dynamic table has  following settings you can pass at initialiation
+
+     {
+	url: 'url_for_restful_api',
+	method: 'method_to_call_api',
+	class : 'custom_class_that_will_be_used_in_table',
+	pageSizes: [10,20,15,50], // page size that you want
+	pageSizeControlName: 'name_assigned_to_pagesize_control',
+	pageSize: currentpagesize,
+	columnInfo: [],
+	pagesEachSide: 4, // page each side to current page
+	debounceTime: 300, //  time for type
+	dataItemsKey: 'data', // key that holds the list of items that will be displayed
+	totalItemsKey: 'total', // key that holds the info of total items
+	params : {}, //default paramaters that will be sent while calling api
+	xcsrftoken: null, // xcsrftoken, you can set this value by ajaxsetup or metatag 
+     }
