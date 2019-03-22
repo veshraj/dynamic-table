@@ -147,5 +147,20 @@ Here- string  in between **::** is the key exists in json object represting a ro
 Let's start with `expression` key - which hold's the condition to apply paritcular template. If no template is there then it will simply disply the value there other wise template will be rendered there. Have a look in structure of `templates`
 option. `(::cutomer_id::)` will be converted to condition - `(rowObject.customer_id)` and `(!::customer_id::)` will be converted to `(!rowObject.customer_id)` and render the template as condition matched. You have to enclose dynamic key by `::`. Suppose you have to make use of `>=` oprator then - experssion should be written as `(::customer_id:: > 1)`.
 
+### 3.8 options @arrayOfJsonObjects and [optional]
+`options` holds the options to be displayed in select. Structure of options as follows - 
 
+     options: [
+     		{'label': 'Active', 'value': 'active'},
+	        {'label': 'Inactive', 'value': 'inactive'}
+	       ]
+Code presented in structure will populate 2 options.
 
+### 3.9 url @string [optional]
+`url` is the string of url from which options will be fetched and rendered to select box.
+
+### 3.10 range @boolean [optional]
+`range` is true by default. This option is applied to `type` value is among the `number` and `date` and provide two inputs `From ` and `To`,you can have only one input by setting `range` option to false.
+
+### 3.11 tdClass @string [optional]
+`tdClass` option holds value that will be applied to parend `td`.
