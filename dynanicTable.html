@@ -37,7 +37,7 @@
 
 					                    {
 					                        name: 'status',
-					                        type: 'actionable',
+					                        type: 'select',
 					                        label: 'Status',
 					                       	badgeClasses: {
 					                            'active':'badge-success',
@@ -45,6 +45,10 @@
 					                        },
 					                        template : '<a class="change-status" href="javascript:;" id="::id::"> <span class="badge ::(badgeClasses)::">::status::</span></a>',
 	                                        tdClass: 'text-center',
+	                                        options: [{'label': 'Active', 'value': 'active'},
+	                                        			{'label': 'Inactive', 'value': 'inactive'}
+	                                        		],
+	                                      	searchable: true,
 					                    },
 					                    {
 					                        name: 'website',

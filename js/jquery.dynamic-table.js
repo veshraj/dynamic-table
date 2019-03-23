@@ -19,7 +19,10 @@
 			dataItemsKey: 'data',
 			totalItemsKey: 'total',
 			request: null,
-			params : null
+			params : null,
+			pageSizeKey: null,
+			xcsrftoken: null,
+			tokenKey: null,
 		},configs);
 
 		var templatePatternRegex = /\::(.*?)\::/g;
@@ -207,12 +210,26 @@
 				 			{
 				 				headingHtml += '<input class="form-control searchable" type="text" name="'+ obj.name +'"/>';
 				 			}
+				 			else if(obj.type == 'select')
+				 			{
+				 				headingHtml += '<select class="custom-select">';
+				 				headingHtml += '<option value=""></option>';
+				 				if(obj.url)
+				 				{
+
+				 				}
+				 				obj.options.forEach(function(option){
+				 					headingHtml += '<option value = "' + option.value + '">' + option.label + '</option>';
+				 				});
+
+				 				headingHtml += '</select>';
+				 			}
 				 			else if(obj.type == 'number')
 				 			{
 				 				if(obj.range !== false)
 				 				{
-				 					headingHtml += '<input class="form-control searchable form-control-sm mb-2" type="number" name="'+ obj.name + '_from" placeholder="From"/>';
-				 					headingHtml += '<input class="form-control searchable form-control-sm" type="number" name="'+ obj.name + '_to" placeholder="To"/>';
+				 					headingHtml += '<input class="form-control searchable form-control-sm mb-2" type = "number" name = "'+ obj.name + '_from" placeholder = "From"/>';
+				 					headingHtml += '<input class="form-control searchable form-control-sm" type = "number" name="'+ obj.name + '_to" placeholder = "To"/>';
 				 				}
 				 				else
 				 				{
@@ -223,12 +240,12 @@
 				 			{
 				 				if(obj.range !== false)
 				 				{
-				 					headingHtml += '<input class="form-control searchable form-control-sm mb-2" type="date" name="'+ obj.name + '_from" placeholder="From"/>';
-				 					headingHtml += '<input class="form-control searchable form-control-sm" type="date" name="'+ obj.name + '_to" placeholder="To"/>';
+				 					headingHtml += '<input class = "form-control searchable form-control-sm mb-2" type = "date" name = "'+ obj.name + '_from" placeholder = "From"/>';
+				 					headingHtml += '<input class = "form-control searchable form-control-sm" type = "date" name = "'+ obj.name + '_to" placeholder = "To"/>';
 				 				}
 				 				else
 				 				{
-				 					headingHtml += '<input class="form-control searchable" type="date" name="'+ obj.name + '"/>';
+				 					headingHtml += '<input class = "form-control searchable" type="date" name = "'+ obj.name + '"/>';
 				 				}
 				 			}
 				 		}
@@ -243,9 +260,29 @@
 
 			function loadList(tableEl)
 			{
+				let ajaxSetup = $.ajaxSetup();
+				if(typeof ajaxSetup.headers == 'undefined' || typeof ajaxSetup.headers['X-CSRF-TOKEN'] == 'undefined')
+				{
+					if(!settings.xcsrftoken && !$('meta[name="csrf-token"]').attr('content'))
+					{
+						console.error('X-CSRF-TOKEN has not been set in ajaxSetup. Nor, xcsrftoken provided in initialization nor defined in meta tag. Please initialize csrftoken in <meta name="csrf-token" content="csrf_token_provided_server"/>');
+					}
+					else
+					{
+						$.ajaxSetup({
+				            headers: {
+				                'X-CSRF-TOKEN': ((settings.xcsrftoken) ? settings.xcsrftoken : $('meta[name="csrf-token"]').attr('content'))
+				            }
+				        });
+					}
+						
+				}
+				
+				
+
 				$.ajaxSetup({
 		            headers: {
-		                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		                'X-CSRF-TOKEN': ((settings.xcsrftoken) ? settings.xcsrftoken : $('meta[name="csrf-token"]').attr('content'))
 		            }
 		        });
 				if(settings.request)
