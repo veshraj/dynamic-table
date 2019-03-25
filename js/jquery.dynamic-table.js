@@ -191,7 +191,7 @@
 				var headingHtml = '<tr>';
 				searchRow = false;
 			 	settings.columnInfo.columns.forEach(function(obj){
-			 		headingHtml += '<th>' + obj.label + '</th>';
+			 		headingHtml += '<th style="display: '+((obj.visible !== false) ? 'table-cell' : 'none')+'">' + obj.label + '</th>';
 			 		if(!searchRow && obj.searchable)
 			 		{
 			 			searchRow  = true;
@@ -203,7 +203,7 @@
 			 	{
 			 		headingHtml += '<tr>';
 			 		settings.columnInfo.columns.forEach(function(obj){
-				 		headingHtml += '<th>';
+				 		headingHtml += '<th style="display: '+((obj.visible !== false) ? 'table-cell' : 'none')+'">';
 				 		if(obj.searchable)
 				 		{
 				 			if(obj.type == 'text' || typeof obj.type == undefined)
@@ -342,7 +342,7 @@
 					settings.columnInfo.columns.forEach(function(column){
 						if(column.templates)
 						{
-							tableRowsHtml += '<td class="' + ((column.tdClass) ? column.tdClass : '')+ '">';
+							tableRowsHtml += '<td class="' + ((column.tdClass) ? column.tdClass : '')+ '" style = "display: '+( (column.visible !== false)? 'table-cell' : 'none')+'">';
 							column.templates.forEach(function(tpl){
 								expression = tpl.expression;
 								conditionVariables = expression.match(templatePatternRegex);
@@ -382,7 +382,7 @@
 						}
 						else if(column.template)
 						{
-							tableRowsHtml += '<td class="' + ((column.tdClass) ? column.tdClass : '')+ '">';
+							tableRowsHtml += '<td class="' + ((column.tdClass) ? column.tdClass : '')+ '" style = "display: '+( (column.visible !== false)? 'table-cell' : 'none')+'">';
 							let renderingTempalate = column.template;
 							let renderings = column.template.match(templatePatternRegex);
 							renderings.forEach(function(patterenedKey){
@@ -402,7 +402,7 @@
 						}
 						else
 						{
-							tableRowsHtml += '<td class="' + ((column.tdClass) ? column.tdClass : '')+ '">' + objectMap(datum,column.name) + '</td>';
+							tableRowsHtml += '<td class="' + ((column.tdClass) ? column.tdClass : '')+ '" style = "display: '+( (column.visible !== false)? 'table-cell' : 'none')+'">' + objectMap(datum,column.name) + '</td>';
 						}
 						
 					});
