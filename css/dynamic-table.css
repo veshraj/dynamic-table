@@ -87,3 +87,7 @@
   -ms-transform: rotate(45deg) !important;
   transform: rotate(45deg) !important;
 }
+
+div[class^='wrapper-for']{
+  overflow-y: auto;
+}

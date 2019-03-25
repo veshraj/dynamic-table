@@ -322,11 +322,14 @@
 				$(inputs).each(function(inex,obj){
 					dataObj[$(obj).prop('name')] = $(obj).val();
 				});
-				var keys = Object.keys(settings.params);
-				keys.forEach(function(key){
-					dataObj[key] = settings.params[key];
-				});
-
+				if(settings.params)
+				{
+					var keys = Object.keys(settings.params);
+					keys.forEach(function(key){
+						dataObj[key] = settings.params[key];
+					});
+				}
+				
 				return dataObj;
 			}
 
