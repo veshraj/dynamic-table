@@ -6,7 +6,9 @@ I am great admirer of datatable. I used it for long time and feel something can 
 This plugin has been developed to synchronize data with server, search on specific columns and rendering as easy as possilbe. It will not look in client side to search. This allows you to set range serach. To work with this you just need to know how to write JSON object in javascript and initialize the jQuery plugin.
 
 ## 2. Example based on https://gorest.co.in/
-Lets start with api returned by https://gorest.co.in/public-api/users?_format=json&access-token=IHV_k_ry6RjB1Pns90WDZKKGVih42hXSeEp2
+Lets start with api returned by https://gorest.co.in/public-api/users?_format=json&access-token=IHV_k_ry6RjB1Pns90WDZKKGVih42hXSeEp2 
+
+If example gives an empty table then - search for `access-token` in index.html file and change the value by visiting https://gorest.co.in/ and click in first resource link listed in Resources topic
 
 ### 2.1 html for table
 
